@@ -1,0 +1,17 @@
+debug: true
+
+spring:
+  application:
+    name: biz-server
+
+server:
+  port: 10001
+
+eureka:
+  instance:
+    hostname: biz-server
+    prefer-ip-address: true
+    appname: ${spring.application.name}
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:9762/eureka/,http://admin:admin@localhost:9761/eureka/

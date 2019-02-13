@@ -11,6 +11,8 @@
 
     <modules>
         <module>alize-cloud-registration-center</module>
+        <module>alize-cloud-gateway</module>
+        <module>alize-biz-server</module>
     </modules>
 
     <parent>

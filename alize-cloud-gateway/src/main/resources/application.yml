@@ -1,0 +1,22 @@
+debug: true
+
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+server:
+  port: 8800
+
+eureka:
+  instance:
+    hostname: cloud-gateway
+    prefer-ip-address: true
+    appname: ${spring.application.name}
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:9762/eureka/,http://admin:admin@localhost:9761/eureka/

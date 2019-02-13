@@ -3,6 +3,7 @@ eureka:
   instance:
     # 注册到Eureka Server上的是ip，而不是主机名
     prefer-ip-address: true
+    appname: ${spring.application.name}
     # 心跳设置 续约更新时间 默认30
     lease-renewal-interval-in-seconds: 15
     # 续约到期时间 告诉服务器如果20秒内未发送任何续约请求，则关闭该客户端 默认90,Eureka Server在启动完成后会创建一个定时器每隔60秒检查一次服务健康状况，如果其中一个服务节点超过90秒未检查到心跳，那么Eureka Server会自动从服务实例列表内将该服务剔除。
