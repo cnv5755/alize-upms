@@ -1,0 +1,50 @@
+debug: true
+eureka:
+  instance:
+    # 注册到Eureka Server上的是ip，而不是主机名
+    prefer-ip-address: true
+    # 心跳设置 续约更新时间 默认30
+    lease-renewal-interval-in-seconds: 15
+    # 续约到期时间 告诉服务器如果20秒内未发送任何续约请求，则关闭该客户端 默认90,Eureka Server在启动完成后会创建一个定时器每隔60秒检查一次服务健康状况，如果其中一个服务节点超过90秒未检查到心跳，那么Eureka Server会自动从服务实例列表内将该服务剔除。
+    lease-expiration-duration-in-seconds: 20
+
+  # 客服端设置
+  client:
+    #  是否向自己注册自己
+    register-with-eureka: true
+    #  是否获取注册信息,这个参数配置了是否自动同步服务列表,你就算将Eureka Client注册到http://node1:10001/eureka/注册中心，也会自动同步到http://node2:10002/eureka/。
+    fetch-registry: true
+    # 开启Eureka客户端 默认为true
+    enabled: true
+    # 抓取服务列表 默认30
+    registry-fetch-interval-seconds: 15
+    # 开启健康检查
+    healthcheck:
+      enabled: true
+
+  # 服务端设置
+  server:
+    # 关闭自我保护机制（默认为打开）
+    # 自我保护机制表示，如果在短时间内注册中心收不到多数服务实例的心跳，则发生了网络故障，
+    # 此时将触发保护机制，不会将这些实例剔除注册中心，等待心跳正常后，会自动退出保护机制
+    # Eureka Server的自我保护机制会检查最近15分钟内所有Eureka Client正常心跳的占比，如果低于85%就会被触发。
+    # 当触发自我保护机制后Eureka Server就会锁定服务列表，不让服务列表内的服务过期，不过这样我们在访问服务时，得到的服务很有可能是已经失效的实例，如果是这样我们就会无法访问到期望的资源，会导致服务调用失败.
+    enable-self-preservation: false
+    # 续期时间，即扫描失效服务的间隔时间（缺省为60*1000ms）
+    eviction-interval-timer-in-ms: 17000
+    # 当eureka服务器启动时获取其他服务器的注册信息失败时，会再次尝试获取，期间需要等待的时间，默认为30 * 1000毫秒
+    registry-sync-retry-wait-ms: 500
+    #  从AWS上更新ASG信息的时间间隔，单位为毫秒，默认为5 * 60 * 1000
+    a-sgcache-expiry-timeout-ms: 30000
+    # 集群里eureka节点的变化信息更新的时间间隔，单位为毫秒，默认为10 * 60 * 1000
+    peer-eureka-nodes-update-interval-ms: 15000
+    # 阈值更新的时间间隔，单位为毫秒，默认为15 * 60 * 1000
+    renewal-threshold-update-interval-ms: 15000
+
+spring:
+  application:
+    name: cloud-registration-center
+  security:
+    user:
+      name: admin
+      password: admin

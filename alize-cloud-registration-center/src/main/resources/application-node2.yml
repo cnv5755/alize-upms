@@ -1,0 +1,10 @@
+server:
+  port: 9762
+
+eureka:
+  instance:
+    hostname: node2
+  client:
+    #  注册到node1上
+    service-url:
+      defaultZone: http://admin:admin@localhost:9761/eureka/
