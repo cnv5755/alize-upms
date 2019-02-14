@@ -3,22 +3,20 @@ package tech.tellme.main;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 
 /**
- * API 网关
+ * 授权服务
  *
  * @author ediii
- * @date 2019年2月13日22点29分
+ * @date 2019年2月14日20点53分
  */
-@SpringBootApplication
 @EnableDiscoveryClient
-@RestController
-public class AlizeCloudGatewayApplication {
-
+@SpringBootApplication
+@EnableAuthorizationServer
+public class AlizeAuthServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AlizeCloudGatewayApplication.class, args);
+        SpringApplication.run(AlizeAuthServerApplication.class, args);
     }
-
 }

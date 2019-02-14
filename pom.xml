@@ -9,10 +9,16 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+    </properties>
+
     <modules>
         <module>alize-cloud-registration-center</module>
         <module>alize-cloud-gateway</module>
         <module>alize-biz-server</module>
+        <module>alize-auth-server</module>
     </modules>
 
     <parent>
@@ -22,10 +28,6 @@
         <relativePath/>
     </parent>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
-    </properties>
 
     <dependencies>
         <dependency>

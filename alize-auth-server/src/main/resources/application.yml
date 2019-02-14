@@ -1,0 +1,19 @@
+debug: true
+
+spring:
+  application:
+    name: auth-server
+
+server:
+  port: 10000
+
+eureka:
+  instance:
+    hostname: auth-server
+    prefer-ip-address: true
+    appname: ${spring.application.name}
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:9762/eureka/,http://admin:admin@localhost:9761/eureka/
+
+
